@@ -82,6 +82,15 @@ section {
   background: #000c6bd0;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+  background: #ccc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000d6b;
+}
+
 @media only screen and (max-width: 768px) {
   section {
     padding: 30px 0px;
