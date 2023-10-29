@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
 import CarItem from "../components/UI/CarItem";
-import carData from "../assets/data/carData";
 import "../styles/car-selection.css";
+import { MyContext } from "../context/context";
 
 const CarListing = () => {
+  const { filterCarData } = useContext(MyContext);
   const [sort, setSort] = useState("none");
   const handleSort = (e) => {
     setSort(e.target.value);
   };
 
-  const sortedCarData = carData.sort((a, b) => {
+  const sortedCarData = filterCarData.sort((a, b) => {
     if (sort === "low") {
       return a.price - b.price;
     } else if (sort === "high") {
@@ -36,7 +37,7 @@ const CarListing = () => {
                 </span>
 
                 <select className="selection" onChange={handleSort}>
-                  <option value="none">Select</option>
+                  <option value="none"> -- Select -- </option>
                   <option value="low">Low to High</option>
                   <option value="high">High to Low</option>
                 </select>

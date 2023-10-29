@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 
 import { Container, Row, Col } from "reactstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/header.css";
+import { MyContext } from "../../context/context";
+import carData from "../../assets/data/carData";
 
 const navLinks = [
   {
@@ -24,9 +26,26 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const menuRef = useRef(null);
-
   const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
+  const { setFilterCarData } = useContext(MyContext);
+
+  const handleSearch = (event) => {
+    const searchQuery = event.target.value.replace(/\s+/g, "");
+    if (searchQuery.length === 0) {
+      setFilterCarData(carData);
+    } else {
+      const afterFilter = carData.filter((item) => {
+        return item.carName.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+      setFilterCarData(afterFilter);
+      if (location.pathname !== "/cars") {
+        navigate("/cars");
+      }
+    }
+  };
 
   return (
     <header className="header">
@@ -147,7 +166,12 @@ const Header = () => {
 
             <div className="nav__right">
               <div className="search__box">
-                <input type="text" placeholder="Search" />
+                <input
+                  type="text"
+                  placeholder="Search Cars"
+                  name="search"
+                  onChange={handleSearch}
+                />
                 <span>
                   <i class="ri-search-line"></i>
                 </span>
