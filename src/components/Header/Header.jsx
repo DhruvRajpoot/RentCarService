@@ -157,6 +157,9 @@ const Header = () => {
                 navigate("/home");
               }}
             >
+              <span className="mobile-icon">
+                <i class="ri-car-line"></i>
+              </span>
               Rent Car Service
             </span>
             <span className="mobile__menu" onClick={toggleMenu}>
