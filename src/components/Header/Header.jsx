@@ -28,8 +28,19 @@ const navLinks = [
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const menubglayerRef = useRef(null);
   const menuRef = useRef(null);
-  const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
+
+  const toggleMenu = () => {
+    if (menuRef.current.style.right === "-100%") {
+      menubglayerRef.current.style.display = "block";
+      menuRef.current.style.right = "0";
+    } else {
+      menubglayerRef.current.style.display = "none";
+      menuRef.current.style.right = "-100%";
+    }
+  };
+
   const { setFilterCarData } = useContext(MyContext);
 
   const handleSearch = (event) => {
@@ -140,28 +151,39 @@ const Header = () => {
       <div className="main__navbar">
         <Container>
           <div className="navigation__wrapper d-flex align-items-center justify-content-between">
-            <span className="mobile-logo">Rent Car Service</span>
-            <span className="mobile__menu">
-              <i class="ri-menu-line" onClick={toggleMenu}></i>
+            <span
+              className="mobile-logo"
+              onClick={() => {
+                navigate("/home");
+              }}
+            >
+              Rent Car Service
+            </span>
+            <span className="mobile__menu" onClick={toggleMenu}>
+              <i class="ri-menu-line"></i>
             </span>
 
-            <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-              <div className="menu">
-                <div className="menu-close-btn">
-                  <i class="ri-close-line"></i>
-                </div>
-                {navLinks.map((item, index) => (
-                  <NavLink
-                    to={item.path}
-                    className={(navClass) =>
-                      navClass.isActive ? "nav__active nav__item" : "nav__item"
-                    }
-                    key={index}
-                  >
-                    {item.display}
-                  </NavLink>
-                ))}
+            <div
+              className="menu-bg-layer"
+              style={{ display: "none" }}
+              ref={menubglayerRef}
+            ></div>
+            <div className="menu" style={{ right: "-100%" }} ref={menuRef}>
+              <div className="menu-close-btn" onClick={toggleMenu}>
+                <i class="ri-close-line"></i>
               </div>
+              {navLinks.map((item, index) => (
+                <NavLink
+                  to={item.path}
+                  className={(navClass) =>
+                    navClass.isActive ? "nav__active nav__item" : "nav__item"
+                  }
+                  key={index}
+                  onClick={toggleMenu}
+                >
+                  {item.display}
+                </NavLink>
+              ))}
             </div>
 
             <div className="nav__right">

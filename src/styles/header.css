@@ -200,14 +200,14 @@
   }
 
   .navigation {
-    background: rgb(0, 13, 107, 0.6);
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
-    left: 0;
-    z-index: 9999;
-    display: none;
+    left: -100%;
+    z-index: 100;
+    display: block;
+    transition: all 0.3s ease-in-out;
   }
 
   .mobile-logo {
@@ -223,9 +223,23 @@
     flex-direction: column;
     row-gap: 2rem;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: 0;
+    right: -100%;
+    transition: all 0.4s ease-in-out;
+    z-index: 9999;
+  }
+
+  .menu-bg-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 13, 107, 0.6);
+    display: none;
+    z-index: 999;
+    transition: all 0.3s ease-in-out;
   }
 
   .menu-close-btn {
