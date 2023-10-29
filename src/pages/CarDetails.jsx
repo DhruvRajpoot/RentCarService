@@ -6,6 +6,7 @@ import Helmet from "../components/Helmet/Helmet";
 import { useParams } from "react-router-dom";
 import BookingForm from "../components/UI/BookingForm";
 import PaymentMethod from "../components/UI/PaymentMethod";
+import "../styles/car-details.css";
 
 const CarDetails = () => {
   const { slug } = useParams();
@@ -115,10 +116,17 @@ const CarDetails = () => {
             </Col>
 
             <Col lg="5">
-              <div style={{ marginTop: "calc(7vw - 2rem)" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+              >
                 <img
                   src={require("../assets/all-images/car-booking-form.jpg")}
-                  className="w-100"
+                  className="rent-form-img"
                   alt=""
                 />
               </div>

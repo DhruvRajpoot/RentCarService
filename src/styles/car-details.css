@@ -1,0 +1,10 @@
+.rent-form-img{
+    display: none;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .rent-form-img{
+        display: block;
+    }
+}
