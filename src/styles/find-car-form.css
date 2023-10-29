@@ -51,7 +51,7 @@
 .hero__slider-section {
   position: relative;
   z-index: 10;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 .hero__form {
@@ -107,9 +107,7 @@
 
 @media only screen and (max-width: 768px) {
   .find__cars-left {
-    padding-top: 20px;
-    padding-bottom: 0;
-    background: #fff;
+    padding: 20px 0 14px 0;
     text-align: center;
   }
 
@@ -141,9 +139,5 @@
 
   .find__cars-left h2 {
     font-size: 1rem;
-  }
-
-  .hero__form {
-    bottom: -250px;
   }
 }
