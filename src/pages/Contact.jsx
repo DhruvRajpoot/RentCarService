@@ -26,6 +26,18 @@ const socialLinks = [
 ];
 
 const Contact = () => {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(name, email, message);
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
+
   return (
     <Helmet title="Contact">
       <CommonSection title="Contact" />
@@ -35,18 +47,39 @@ const Contact = () => {
             <Col lg="7" md="7">
               <h6 className="fw-bold mb-4">Get In Touch</h6>
 
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <FormGroup className="contact__form">
-                  <Input placeholder="Your Name" type="text" />
+                  <Input
+                    placeholder="Your Name"
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
                 </FormGroup>
                 <FormGroup className="contact__form">
-                  <Input placeholder="Email" type="email" />
+                  <Input
+                    placeholder="Email"
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
                 </FormGroup>
                 <FormGroup className="contact__form">
                   <textarea
                     rows="5"
                     placeholder="Message"
                     className="textarea"
+                    name="message"
+                    value={message}
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
                   ></textarea>
                 </FormGroup>
 
@@ -69,7 +102,9 @@ const Contact = () => {
 
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="mb-0 fs-6">Email:</h6>
-                  <p className="section__description mb-0">rentcarservice@gmail.com</p>
+                  <p className="section__description mb-0">
+                    rentcarservice@gmail.com
+                  </p>
                 </div>
 
                 <h6 className="fw-bold mt-4">Follow Us</h6>

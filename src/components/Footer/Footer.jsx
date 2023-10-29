@@ -28,6 +28,13 @@ const quickLinks = [
 const Footer = () => {
   const date = new Date();
   const year = date.getFullYear();
+  const [email, setEmail] = React.useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(email);
+    setEmail("");
+  };
+
   return (
     <footer className="footer">
       <Container>
@@ -80,19 +87,38 @@ const Footer = () => {
             <div className="mb-4">
               <h5 className="footer__link-title">Newsletter</h5>
               <p className="section__description">Subscribe our newsletter</p>
-              <div className="newsletter">
-                <input type="email" placeholder="Email" />
-                <span>
-                  <i class="ri-send-plane-line"></i>
-                </span>
-              </div>
+              <form className="newsletter" onSubmit={handleSubmit}>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                <button
+                  type="submit"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    outline: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  <span>
+                    <i class="ri-send-plane-line"></i>
+                  </span>
+                </button>
+              </form>
             </div>
           </Col>
 
           <Col lg="12">
             <div className="footer__bottom">
               <p className="section__description d-flex align-items-center justify-content-center gap-1 pt-4">
-                <i class="ri-copyright-line"></i>Copyright {year}, All rights reserved.
+                <i class="ri-copyright-line"></i>Copyright {year}, All rights
+                reserved.
               </p>
             </div>
           </Col>
