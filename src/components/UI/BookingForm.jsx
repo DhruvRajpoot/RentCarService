@@ -25,7 +25,7 @@ const BookingForm = () => {
     console.log(formData);
 
     const { data } = await axios.post(
-      `http://localhost:8080/payment/createorder`,
+      `https://rent-car-service.onrender.com/payment/createorder`,
       {
         email: "dhruv.kutarya@gmail.com",
         amount: 2,
@@ -37,9 +37,9 @@ const BookingForm = () => {
       currency: data.currency,
       name: "Rent Car Service",
       description: "Payment for car rent",
-      image: `http://localhost:8080/logo.png`,
+      image: `https://rent-car-service.onrender.com/logo.png`,
       order_id: data.id,
-      callback_url: "http://localhost:8080/payment/verify",
+      callback_url: `https://rent-car-service.onrender.com/payment/verify`,
       prefill: {
         name: data.fullname,
         email: data.email,
