@@ -1,10 +1,33 @@
-.rent-form-img{
-    display: none;
-    width: 100%;
+.rent-form-img {
+  display: none;
+  width: 100%;
+}
+
+.payment label {
+  font-weight: 600;
+  color: #000d6b;
+}
+
+.payment button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  background: #000d6b;
+  color: #fff;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.payment button:hover {
+  background-color: #02149a;
+}
+
+.payment button:active {
+  transform: scale(0.95);
 }
 
 @media (min-width: 1024px) {
-    .rent-form-img{
-        display: block;
-    }
+  .rent-form-img {
+    display: block;
+  }
 }

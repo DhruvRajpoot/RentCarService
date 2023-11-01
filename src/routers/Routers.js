@@ -6,6 +6,7 @@ import CarListing from "../pages/CarListing";
 import CarDetails from "../pages/CarDetails";
 import NotFound from "../pages/NotFound";
 import Contact from "../pages/Contact";
+import { PaymentSuccess } from "../components/UI/PaymentSuccess";
 
 const Routers = () => {
   return (
@@ -15,6 +16,7 @@ const Routers = () => {
       <Route path="/about" element={<About />} />
       <Route path="/cars" element={<CarListing />} />
       <Route path="/cars/:slug" element={<CarDetails />} />
+      <Route path="/paymentsuccess" element={<PaymentSuccess />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

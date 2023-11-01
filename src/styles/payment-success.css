@@ -1,18 +1,14 @@
-.not-found {
+.payment-success {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: .5rem;
   text-align: center;
   min-height: calc(100vh - 575px);
-  color: red;
   padding: 2rem 0;
 }
 
-.not-found-heading {
-  color: red;
-}
-
-.not-found-para {
-  font-size: calc(1rem + 0.2vw);
+.payment-success-heading {
+  color: green;
 }

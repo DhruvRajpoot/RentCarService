@@ -32,6 +32,7 @@ const Header = () => {
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
+    if (window.innerWidth > 768) return;
     if (menuRef.current.style.right === "-100%") {
       menubglayerRef.current.style.display = "block";
       menuRef.current.style.right = "0";
