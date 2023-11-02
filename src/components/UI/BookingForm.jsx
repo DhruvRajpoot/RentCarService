@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../styles/booking-form.css";
 import { Form } from "reactstrap";
 import axios from "axios";
+import { SERVER_URL } from "../../config/config";
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +14,6 @@ const BookingForm = () => {
     date: "",
     time: "",
     message: "",
-    paymentmode: "",
   });
 
   const handleChange = (e) => {
@@ -24,22 +24,19 @@ const BookingForm = () => {
     e.preventDefault();
     console.log(formData);
 
-    const { data } = await axios.post(
-      `https://rent-car-service.onrender.com/payment/createorder`,
-      {
-        email: "dhruv.kutarya@gmail.com",
-        amount: 2,
-      }
-    );
+    const { data } = await axios.post(`${SERVER_URL}/payment/createorder`, {
+      email: "dhruv.kutarya@gmail.com",
+      amount: 2,
+    });
     const options = {
       key: `${process.env.REACT_APP_RAZORPAY_KEY_ID}`,
       amount: data.amount,
       currency: data.currency,
       name: "Rent Car Service",
       description: "Payment for car rent",
-      image: `https://rent-car-service.onrender.com/logo.png`,
+      image: `${SERVER_URL}/logo.png`,
       order_id: data.id,
-      callback_url: `https://rent-car-service.onrender.com/payment/verify`,
+      callback_url: `${SERVER_URL}/payment/verify`,
       prefill: {
         name: data.fullname,
         email: data.email,
@@ -96,7 +93,7 @@ const BookingForm = () => {
           required
         />
         <input
-          type="number"
+          type="text"
           placeholder="Mobile Number"
           name="mobilenumber"
           onChange={handleChange}
@@ -110,6 +107,7 @@ const BookingForm = () => {
           name="date"
           onChange={handleChange}
           value={formData.date}
+          min={new Date().toISOString().split("T")[0]}
           required
         />
         <input
@@ -119,6 +117,7 @@ const BookingForm = () => {
           onChange={handleChange}
           value={formData.time}
           name="time"
+          required
         />
       </div>
       <textarea
@@ -132,47 +131,8 @@ const BookingForm = () => {
         required
       />
 
-      <div className="payment__info mt-3">
-        <h5 className="mb-4 fw-bold ">Payment Information</h5>
-        <div className="payment mt-3 d-flex align-items-center justify-content-between">
-          <label
-            htmlFor="cash"
-            className="d-flex align-items-center gap-2"
-            style={{ cursor: "pointer" }}
-          >
-            <input
-              type="radio"
-              name="paymentmode"
-              id="cash"
-              value="cash"
-              onChange={handleChange}
-              required
-            />
-            Cash
-          </label>
-        </div>
-
-        <div className="payment mt-3 d-flex align-items-center justify-content-between">
-          <label
-            htmlFor="upi"
-            className="d-flex align-items-center gap-2"
-            style={{ cursor: "pointer" }}
-          >
-            <input
-              type="radio"
-              name="paymentmode"
-              id="upi"
-              value="upi"
-              onChange={handleChange}
-              required
-            />
-            UPI
-          </label>
-        </div>
-
-        <div className="payment mt-4">
-          <button type="submit">Reserve Now</button>
-        </div>
+      <div className="payment mt-4">
+        <button type="submit">Reserve Now</button>
       </div>
     </Form>
   );
