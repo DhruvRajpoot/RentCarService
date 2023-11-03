@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/booking-form.css";
 import { Form } from "reactstrap";
 import axios from "axios";
 import { SERVER_URL } from "../../config/config";
 
 const BookingForm = () => {
+  const [disabled, setDisabled] = useState(false);
+
+  // gives 2 hours ahead time in local timezone
+  const currentDate = new Date();
+  currentDate.setMinutes(
+    currentDate.getMinutes() - currentDate.getTimezoneOffset()
+  );
+  currentDate.setHours(currentDate.getHours() + 2);
+
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -22,45 +31,50 @@ const BookingForm = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setDisabled(true);
     console.log(formData);
+    try {
+      const { data } = await axios.post(`${SERVER_URL}/payment/createorder`, {
+        email: "dhruv.kutarya@gmail.com",
+        amount: 2,
+      });
+      const options = {
+        key: `${process.env.REACT_APP_RAZORPAY_KEY_ID}`,
+        amount: data.amount,
+        currency: data.currency,
+        name: "Rent Car Service",
+        description: "Payment for car rent",
+        image: `${SERVER_URL}/logo.png`,
+        order_id: data.id,
+        callback_url: `${SERVER_URL}/payment/verify`,
+        prefill: {
+          name: data.fullname,
+          email: data.email,
+          contact: formData.mobilenumber,
+        },
+        theme: {
+          color: "#000d6b",
+        },
+      };
 
-    const { data } = await axios.post(`${SERVER_URL}/payment/createorder`, {
-      email: "dhruv.kutarya@gmail.com",
-      amount: 2,
-    });
-    const options = {
-      key: `${process.env.REACT_APP_RAZORPAY_KEY_ID}`,
-      amount: data.amount,
-      currency: data.currency,
-      name: "Rent Car Service",
-      description: "Payment for car rent",
-      image: `${SERVER_URL}/logo.png`,
-      order_id: data.id,
-      callback_url: `${SERVER_URL}/payment/verify`,
-      prefill: {
-        name: data.fullname,
-        email: data.email,
-        contact: formData.mobilenumber,
-      },
-      theme: {
-        color: "#000d6b",
-      },
-    };
+      const razor = new window.Razorpay(options);
+      razor.open();
 
-    const razor = new window.Razorpay(options);
-    razor.open();
-
-    setFormData({
-      firstname: "",
-      lastname: "",
-      email: "",
-      mobilenumber: "",
-      address: "",
-      date: "",
-      time: "",
-      message: "",
-      paymentmode: "",
-    });
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        mobilenumber: "",
+        address: "",
+        date: "",
+        time: "",
+        message: "",
+        paymentmode: "",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    setDisabled(false);
   };
 
   return (
@@ -103,20 +117,20 @@ const BookingForm = () => {
         />
         <input
           type="date"
-          placeholder="Journey Date"
+          className="pickup__date__picker"
           name="date"
           onChange={handleChange}
           value={formData.date}
-          min={new Date().toISOString().split("T")[0]}
+          min={currentDate.toISOString().split("T")[0]}
           required
         />
         <input
           type="time"
-          placeholder="Journey Time"
           className="time__picker"
           onChange={handleChange}
           value={formData.time}
           name="time"
+          min={currentDate.toISOString().split("T")[1].split(".")[0]}
           required
         />
       </div>
@@ -132,7 +146,9 @@ const BookingForm = () => {
       />
 
       <div className="payment mt-4">
-        <button type="submit">Reserve Now</button>
+        <button type="submit" disabled={disabled}>
+          Reserve Now
+        </button>
       </div>
     </Form>
   );

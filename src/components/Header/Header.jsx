@@ -126,7 +126,7 @@ const Header = () => {
                 </span>
                 <div className="header__location-content">
                   <h4>Everyday</h4>
-                  <h6>10am - 7pm</h6>
+                  <h6>24 Hours</h6>
                 </div>
               </div>
             </Col>

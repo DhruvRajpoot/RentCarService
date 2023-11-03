@@ -39,14 +39,12 @@ const Footer = () => {
     <footer className="footer">
       <Container>
         <Row>
-          <Col lg="4" md="4" sm="12">
+          <Col lg="4" md="12" sm="12">
             <div className="logo footer__logo">
               <h1>
                 <Link to="/home" className=" d-flex align-items-center gap-2">
                   <i class="ri-car-line"></i>
-                  <span>
-                    Rent Car <br /> Service
-                  </span>
+                  <span>Rent Car Service</span>
                 </Link>
               </h1>
             </div>
@@ -58,7 +56,7 @@ const Footer = () => {
             </p>
           </Col>
 
-          <Col lg="2" md="4" sm="6">
+          <Col lg="2" md="6" sm="6">
             <div className="mb-4">
               <h5 className="footer__link-title">Quick Links</h5>
               <ListGroup>
@@ -71,7 +69,7 @@ const Footer = () => {
             </div>
           </Col>
 
-          <Col lg="3" md="4" sm="6">
+          <Col lg="3" md="6" sm="6">
             <div className="mb-4">
               <h5 className="footer__link-title mb-4">Head Office</h5>
               <p className="office__info">123, Bhopal, Madhya Pradesh</p>
@@ -83,38 +81,19 @@ const Footer = () => {
             </div>
           </Col>
 
-          <Col lg="3" md="4" sm="12">
+          <Col lg="3" md="12" sm="12">
             <div className="mb-4">
-              <h5 className="footer__link-title">Newsletter</h5>
-              <p className="section__description">Subscribe our newsletter</p>
-              <form className="newsletter" onSubmit={handleSubmit}>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-                <button
-                  type="submit"
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    outline: "none",
-                    cursor: "pointer",
-                  }}
-                >
-                  <span>
-                    <i class="ri-send-plane-line"></i>
-                  </span>
-                </button>
-              </form>
+              <h5 className="footer__link-title mb-3">Newsletter</h5>
+              <p className="section__description">
+                We're launching a newsletter filled with exclusive content,
+                expert insights, and valuable tips. Join us to stay informed,
+                inspired, and connected. Subscribers will receive the latest
+                updates, industry news, and more.
+              </p>
             </div>
           </Col>
 
-          <Col lg="12">
+          <Col lg="12" md="12">
             <div className="footer__bottom">
               <p className="section__description d-flex align-items-center justify-content-center gap-1 pt-4">
                 <i class="ri-copyright-line"></i>Copyright {year}, All rights

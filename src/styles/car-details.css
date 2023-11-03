@@ -22,6 +22,11 @@
   background-color: #02149a;
 }
 
+.payment button:disabled {
+  background-color: #7c8a97;
+  cursor: not-allowed;
+}
+
 .payment button:active {
   transform: scale(0.95);
 }
