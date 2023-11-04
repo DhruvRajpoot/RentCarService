@@ -4,53 +4,67 @@ import { Form } from "reactstrap";
 import axios from "axios";
 import { SERVER_URL } from "../../config/config";
 
-const BookingForm = () => {
+const BookingForm = ({ carDetails }) => {
+  // Reserve Now button disabled state
   const [disabled, setDisabled] = useState(false);
 
-  // gives 2 hours ahead time in local timezone
+  // Gives 2 hours ahead time in local timezone
   const currentDate = new Date();
   currentDate.setMinutes(
     currentDate.getMinutes() - currentDate.getTimezoneOffset()
   );
   currentDate.setHours(currentDate.getHours() + 2);
 
-  const [formData, setFormData] = useState({
+  // Booking form data
+  const [journeyData, setJourneyData] = useState({
     firstname: "",
     lastname: "",
     email: "",
     mobilenumber: "",
     address: "",
-    date: "",
-    time: "",
-    message: "",
+    pickup_date: "",
+    pickup_time: "",
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setJourneyData({ ...journeyData, [e.target.name]: e.target.value });
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setDisabled(true);
-    console.log(formData);
+
     try {
       const { data } = await axios.post(`${SERVER_URL}/payment/createorder`, {
-        email: "dhruv.kutarya@gmail.com",
-        amount: 2,
+        email: "dhruv.kutarya@gmail.com", // TODO: change this to logged in user's email
+        carDetails: {
+          _id: carDetails.id,
+          carName: carDetails.carName,
+          price: carDetails.price,
+        },
       });
+
+      // create booking order with razorpay_order_id
+      await axios.post(`${SERVER_URL}/order/createorder`, {
+        email: data.email,
+        razorpay_order_id: data.id,
+        carId: data.carDetails._id,
+        journeyDetails: journeyData,
+      });
+
       const options = {
         key: `${process.env.REACT_APP_RAZORPAY_KEY_ID}`,
-        amount: data.amount,
+        amount: data.carDetails.price,
         currency: data.currency,
         name: "Rent Car Service",
-        description: "Payment for car rent",
+        description: `Payment for ${carDetails.carName} rent`,
         image: `${SERVER_URL}/logo.png`,
         order_id: data.id,
         callback_url: `${SERVER_URL}/payment/verify`,
         prefill: {
           name: data.fullname,
           email: data.email,
-          contact: formData.mobilenumber,
+          contact: journeyData.mobilenumber,
         },
         theme: {
           color: "#000d6b",
@@ -60,16 +74,14 @@ const BookingForm = () => {
       const razor = new window.Razorpay(options);
       razor.open();
 
-      setFormData({
+      setJourneyData({
         firstname: "",
         lastname: "",
         email: "",
         mobilenumber: "",
         address: "",
-        date: "",
-        time: "",
-        message: "",
-        paymentmode: "",
+        pickup_date: "",
+        pickup_time: "",
       });
     } catch (err) {
       console.log(err);
@@ -87,7 +99,7 @@ const BookingForm = () => {
           placeholder="First Name"
           name="firstname"
           onChange={handleChange}
-          value={formData.firstname}
+          value={journeyData.firstname}
           required
         />
         <input
@@ -95,7 +107,7 @@ const BookingForm = () => {
           placeholder="Last Name"
           name="lastname"
           onChange={handleChange}
-          value={formData.lastname}
+          value={journeyData.lastname}
           required
         />
         <input
@@ -103,7 +115,7 @@ const BookingForm = () => {
           placeholder="Email"
           name="email"
           onChange={handleChange}
-          value={formData.email}
+          value={journeyData.email}
           required
         />
         <input
@@ -111,16 +123,16 @@ const BookingForm = () => {
           placeholder="Mobile Number"
           name="mobilenumber"
           onChange={handleChange}
-          value={formData.mobilenumber}
+          value={journeyData.mobilenumber}
           pattern="[0-9]{10}"
           required
         />
         <input
           type="date"
           className="pickup__date__picker"
-          name="date"
+          name="pickup_date"
           onChange={handleChange}
-          value={formData.date}
+          value={journeyData.pickup_date}
           min={currentDate.toISOString().split("T")[0]}
           required
         />
@@ -128,9 +140,14 @@ const BookingForm = () => {
           type="time"
           className="time__picker"
           onChange={handleChange}
-          value={formData.time}
-          name="time"
-          min={currentDate.toISOString().split("T")[1].split(".")[0]}
+          value={journeyData.pickup_time}
+          name="pickup_time"
+          step={1}
+          min={
+            journeyData.pickup_date === currentDate.toISOString().split("T")[0]
+              ? currentDate.toISOString().split("T")[1].split(".")[0]
+              : null
+          }
           required
         />
       </div>
@@ -141,7 +158,7 @@ const BookingForm = () => {
         placeholder="Address"
         name="address"
         onChange={handleChange}
-        value={formData.address}
+        value={journeyData.address}
         required
       />
 
