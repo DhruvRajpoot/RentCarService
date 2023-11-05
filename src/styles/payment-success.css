@@ -5,7 +5,7 @@
   align-items: center;
   gap: .5rem;
   text-align: center;
-  min-height: calc(100vh - 575px);
+  min-height: calc(100vh - 564px);
   padding: 2rem 0;
 }
 

@@ -73,11 +73,21 @@ const Footer = () => {
             <div className="mb-4">
               <h5 className="footer__link-title mb-4">Head Office</h5>
               <p className="office__info">123, Bhopal, Madhya Pradesh</p>
+              <p className="office__info">
+                Email:
+                <a
+                  href="mailto:contact.rentcarservice@gmail.com"
+                  style={{
+                    color: "rgba(255, 255, 255, 0.715)",
+                    textDecoration: "none",
+                    marginLeft: "5px",
+                  }}
+                >
+                  contact.rentcarservice@gmail.com
+                </a>
+              </p>
               <p className="office__info">Phone: +123123123123</p>
-
-              <p className="office__info">Email: rentcarservice@gmail.com</p>
-
-              <p className="office__info">Office Time: 10am - 7pm</p>
+              <p className="office__info">Office Time: 24 hours</p>
             </div>
           </Col>
 
@@ -96,8 +106,8 @@ const Footer = () => {
           <Col lg="12" md="12">
             <div className="footer__bottom">
               <p className="section__description d-flex align-items-center justify-content-center gap-1 pt-4">
-                <i className="ri-copyright-line"></i>Copyright {year}, All rights
-                reserved.
+                <i className="ri-copyright-line"></i>Copyright {year}, All
+                rights reserved.
               </p>
             </div>
           </Col>
