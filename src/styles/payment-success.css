@@ -3,12 +3,53 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: .5rem;
   text-align: center;
   min-height: calc(100vh - 564px);
   padding: 2rem 0;
 }
 
+.payment-success-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.green-tick-payment-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  background-color: green;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  border-radius: 50%;
+  color: white;
+}
+
 .payment-success-heading {
   color: green;
+}
+
+.payment-success-btn {
+  padding: 7px 15px;
+  background: #000d6b;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.payment-success-btn a{
+  text-decoration: none;
+  color: #fff !important;
+}
+
+.payment-success-btn:hover {
+  background: #0215a4;
+}
+
+.payment-success-btn:active {
+  transform: scale(0.95);
 }

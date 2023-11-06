@@ -69,8 +69,10 @@ const Header = () => {
               <div className="header__top__left">
                 <span>Need Help?</span>
                 <span className="header__top__help">
-                  <i className="ri-phone-fill"></i>
-                  <a href="tel:+1234567890">+123 456 7890</a>
+                  <i class="ri-mail-fill"></i>
+                  <a href="mailto:contact.rentcarservice@gmail.com">
+                    contact.rentcarservice@gmail.com
+                  </a>
                 </span>
               </div>
             </Col>

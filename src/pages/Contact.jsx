@@ -83,7 +83,7 @@ const Contact = () => {
                   ></textarea>
                 </FormGroup>
 
-                <button className=" contact__btn" type="submit">
+                <button className="contact__btn" type="submit">
                   Send Message
                 </button>
               </Form>

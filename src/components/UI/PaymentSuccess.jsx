@@ -4,6 +4,7 @@ import "../../styles/payment-success.css";
 import { SERVER_URL } from "../../config/config.jsx";
 import useaxios from "../../utils/useaxios.jsx";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const PaymentSuccess = () => {
   const location = useLocation();
@@ -38,18 +39,29 @@ export const PaymentSuccess = () => {
     <div className="payment-success">
       {loading ? (
         <div className="loader">
-          <div className="loader-spinner">Loading...</div>
+          <h2 className="loader-spinner">Loading...</h2>
         </div>
       ) : (
         <>
           {Object.keys(orderDetails).length === 0 ? (
-            <div>Order not found</div>
+            <div className="payment-succes-wrapper">
+              <h2 style={{ color: "red", marginBottom:"1rem" }}>Order not found</h2>
+              <button className="payment-success-btn">
+                <Link to="/">Go to Home</Link>
+              </button>
+            </div>
           ) : (
-            <div>
+            <div className="payment-success-wrapper">
+              <span className="green-tick-payment-success">
+                <i className="ri-check-double-line"></i>
+              </span>
               <h3 className="payment-success-heading">
                 Your rental car is successfully booked
               </h3>
-              <h5>Thank you for choosing our service</h5>
+              <h4>Thank you for choosing our service</h4>
+              <button className="payment-success-btn">
+                <Link to="/">Go to Home</Link>
+              </button>
             </div>
           )}
         </>
