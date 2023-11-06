@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/forgot-password.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -12,6 +12,11 @@ const ForgotPassword = () => {
   const [viewPassword, setViewPassword] = useState(false);
   const [otpsent, setOtpSent] = useState(false);
   const [disabled, setDisabled] = useState(false);
+
+  // scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Send OTP to email
   const handleSendOtp = async (e) => {
@@ -91,12 +96,18 @@ const ForgotPassword = () => {
                   onMouseLeave={() => {
                     setViewPassword(!viewPassword);
                   }}
+                  onClick={() => {
+                    setViewPassword(false);
+                  }}
                 />
               ) : (
                 <i
                   className="ri-eye-off-fill"
                   onMouseEnter={() => {
                     setViewPassword(!viewPassword);
+                  }}
+                  onClick={() => {
+                    setViewPassword(true);
                   }}
                 />
               )}

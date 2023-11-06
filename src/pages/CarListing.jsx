@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
@@ -12,6 +12,11 @@ const CarListing = () => {
   const handleSort = (e) => {
     setSort(e.target.value);
   };
+
+  // scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const sortedCarData = filterCarData.sort((a, b) => {
     if (sort === "low") {

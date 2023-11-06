@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeroSlider from "../components/UI/HeroSlider";
 import Helmet from "../components/Helmet/Helmet";
 
@@ -12,6 +12,11 @@ import Testimonial from "../components/UI/Testimonial";
 import BecomeDriverSection from "../components/UI/BecomeDriverSection";
 
 const Home = () => {
+  // scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Helmet title="Home">
       {/* ============= hero section =========== */}

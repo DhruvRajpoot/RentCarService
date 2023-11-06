@@ -10,6 +10,11 @@ const Login = () => {
   const location = useLocation();
   const { loggedInUser, setLoggedInUser } = useContext(MyContext);
 
+  // scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     if (loggedInUser) {
       if (location.state && location.state.from) {
@@ -74,12 +79,18 @@ const Login = () => {
                 onMouseLeave={() => {
                   setViewPassword(!viewPassword);
                 }}
+                onClick={() => {
+                  setViewPassword(false);
+                }}
               />
             ) : (
               <i
                 className="ri-eye-off-fill"
                 onMouseEnter={() => {
                   setViewPassword(!viewPassword);
+                }}
+                onClick={() => {
+                  setViewPassword(true);
                 }}
               />
             )}
@@ -95,7 +106,22 @@ const Login = () => {
         </button>
       </form>
       <p>
-        Don't have an account? <Link to="/register">Register</Link>
+        Don't have an account?
+        <span
+          onClick={() => {
+            navigate("/register", {
+              state: { from: location.state && location.state.from },
+            });
+          }}
+          style={{
+            cursor: "pointer",
+            color: "#007bff",
+            marginLeft: "5px",
+            textDecoration: "underline",
+          }}
+        >
+          Register
+        </span>
       </p>
     </div>
   );

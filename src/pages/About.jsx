@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CommonSection from "../components/UI/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
 import AboutSection from "../components/UI/AboutSection";
@@ -9,6 +9,11 @@ import "../styles/about.css";
 import BecomeDriverSection from "../components/UI/BecomeDriverSection";
 
 const About = () => {
+  // scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Helmet title="About">
       <CommonSection title="About Us" />
@@ -30,16 +35,22 @@ const About = () => {
                 </h2>
 
                 <p className="section__description">
-                We recognize that when you choose our rental services, you're entrusting us with your well-being.
-                As a result, we spare no effort in ensuring the safety of every vehicle in our fleet.
-                Our team of meticulously maintains and rigorously inspects our cars to guarantee their roadworthiness.
-                We have strict quality checks in place to uphold these standards.
+                  We recognize that when you choose our rental services, you're
+                  entrusting us with your well-being. As a result, we spare no
+                  effort in ensuring the safety of every vehicle in our fleet.
+                  Our team of meticulously maintains and rigorously inspects our
+                  cars to guarantee their roadworthiness. We have strict quality
+                  checks in place to uphold these standards.
                 </p>
 
                 <p className="section__description">
-                We continually invest in cutting-edge safety features and technology to enhance your rental experience.
-                Your safety is our utmost priority, and we take pride in being your dependable partner for secure and reliable ride solutions. 
-                We are unwavering in our commitment to delivering the highest standards of safety, granting you peace of mind as you embark on your journeys.
+                  We continually invest in cutting-edge safety features and
+                  technology to enhance your rental experience. Your safety is
+                  our utmost priority, and we take pride in being your
+                  dependable partner for secure and reliable ride solutions. We
+                  are unwavering in our commitment to delivering the highest
+                  standards of safety, granting you peace of mind as you embark
+                  on your journeys.
                 </p>
               </div>
             </Col>

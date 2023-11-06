@@ -84,7 +84,10 @@ const CarDetails = () => {
                   style={{ columnGap: "2.8rem" }}
                 >
                   <span className=" d-flex align-items-center gap-1 section__description">
-                    <i className="ri-map-pin-line" style={{ color: "#f9a826" }}></i>{" "}
+                    <i
+                      className="ri-map-pin-line"
+                      style={{ color: "#f9a826" }}
+                    ></i>{" "}
                     {singleCarItem.gps}
                   </span>
 
@@ -100,7 +103,7 @@ const CarDetails = () => {
                     <i
                       className="ri-building-2-line"
                       style={{ color: "#f9a826" }}
-                    ></i>{" "}
+                    ></i>
                     {singleCarItem.brand}
                   </span>
                 </div>
@@ -109,7 +112,7 @@ const CarDetails = () => {
 
             <Col lg="7" className="mt-5">
               <div className="booking-info mt-5">
-                <BookingForm carDetails={singleCarItem} slug={slug}/>
+                <BookingForm carDetails={singleCarItem} slug={slug} />
               </div>
             </Col>
 

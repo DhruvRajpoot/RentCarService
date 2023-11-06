@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Input } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
@@ -29,6 +29,11 @@ const Contact = () => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
+
+  // scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -102,7 +107,10 @@ const Contact = () => {
 
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="mb-0 fs-6">Email:</h6>
-                  <a href="mailto:contact.rentcarservice@gmail.com" className="section__description mb-0">
+                  <a
+                    href="mailto:contact.rentcarservice@gmail.com"
+                    className="section__description mb-0"
+                  >
                     contact.rentcarservice@gmail.com
                   </a>
                 </div>

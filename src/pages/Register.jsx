@@ -76,12 +76,18 @@ const Login = () => {
                 onMouseLeave={() => {
                   setViewPassword(!viewPassword);
                 }}
+                onClick={() => {
+                  setViewPassword(false);
+                }}
               />
             ) : (
               <i
                 className="ri-eye-off-fill"
                 onMouseEnter={() => {
                   setViewPassword(!viewPassword);
+                }}
+                onClick={() => {
+                  setViewPassword(true);
                 }}
               />
             )}
@@ -103,7 +109,22 @@ const Login = () => {
         </button>
       </form>
       <p>
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account?{" "}
+        <span
+          onClick={() => {
+            navigate("/login", {
+              state: { from: location.state && location.state.from },
+            });
+          }}
+          style={{
+            cursor: "pointer",
+            color: "#007bff",
+            marginLeft: "5px",
+            textDecoration: "underline",
+          }}
+        >
+          Login
+        </span>
       </p>
     </div>
   );
