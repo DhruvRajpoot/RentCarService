@@ -41,7 +41,7 @@ const Testimonial = () => {
   const testimonialData = [
     {
       description:
-      "\"Exceptional Service Experience: I was thoroughly impressed with the top-notch service provided by this rental company. From the moment I booked my car to the final drop-off, everything was seamless and stress-free. The vehicle was clean, well-maintained, and delivered on time. I can't recommend them enough!\"",
+        '"Exceptional Service Experience: I was thoroughly impressed with the top-notch service provided by this rental company. From the moment I booked my car to the final drop-off, everything was seamless and stress-free. The vehicle was clean, well-maintained, and delivered on time. I can\'t recommend them enough!"',
       name: "Mahesh Kumar",
       designation: "Customer",
       imgUrl: ava01,
@@ -49,7 +49,7 @@ const Testimonial = () => {
 
     {
       description:
-        "\"I recently rented a car from this company, and I must say it was a fantastic! Vehicle was in excellent condition, and the customer service was outstanding. I especially appreciated the prompt response to my questions and the smooth, hassle-free pickup and drop-off. I'll definitely be a returning customer!\"",
+        '"I recently rented a car from this company, and I must say it was a fantastic! Vehicle was in excellent condition, and the customer service was outstanding. I especially appreciated the prompt response to my questions and the smooth, hassle-free pickup and drop-off. I\'ll definitely be a returning customer!"',
       name: "Jaya Bachchan",
       designation: "Customer",
       imgUrl: ava02,
@@ -57,7 +57,7 @@ const Testimonial = () => {
 
     {
       description:
-        "\"The car rental experience exceeded my expectations. The vehicle was in excellent condition, and the customer service was exceptional. I appreciate the punctuality and professionalism displayed by the team. Will definitely choose them again in the future travels.\"",
+        '"The car rental experience exceeded my expectations. The vehicle was in excellent condition, and the customer service was exceptional. I appreciate the punctuality and professionalism displayed by the team. Will definitely choose them again in the future travels."',
       name: "Rahul Kumawat",
       designation: "Customer",
       imgUrl: ava03,
@@ -65,7 +65,7 @@ const Testimonial = () => {
 
     {
       description:
-        "\"Renting from this company made our family trip a breeze. The spacious and clean vehicle accommodated all our needs, and the friendly driver ensured a safe and comfortable journey. My husband and I were thoroughly impressed, and we'll definitely be using their services again for our next adventure!\"",
+        '"Renting from this company made our family trip a breeze. The spacious and clean vehicle accommodated all our needs, and the friendly driver ensured a safe and comfortable journey. My husband and I were thoroughly impressed, and we\'ll definitely be using their services again for our next adventure!"',
       name: "Radha Sharma",
       designation: "Customer",
       imgUrl: ava04,
@@ -80,7 +80,12 @@ const Testimonial = () => {
             <p className="section__description">{item.description}</p>
 
             <div className="mt-3 d-flex align-items-center gap-4">
-              <img src={item.imgUrl} alt="" className="w-25 h-25 rounded-2" />
+              <img
+                src={item.imgUrl}
+                loading="lazy"
+                alt=""
+                className="w-25 h-25 rounded-2"
+              />
 
               <div>
                 <h6 className="mb-0 mt-3">{item.name}</h6>

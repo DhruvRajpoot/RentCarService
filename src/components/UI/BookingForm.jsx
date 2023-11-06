@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/booking-form.css";
 import { Form } from "reactstrap";
-import axios from "axios";
 import { SERVER_URL } from "../../config/config";
 import { useContext } from "react";
 import { MyContext } from "../../context/context";

@@ -10,8 +10,8 @@ const Login = () => {
   const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [viewPassword, setViewPassword] = useState(false);
+  const [fullname, setFullName] = useState("");
   const { loggedInUser, setLoggedInUser } = useContext(MyContext);
 
   useEffect(() => {
@@ -24,17 +24,26 @@ const Login = () => {
     }
   }, [loggedInUser]);
 
+  const [disabled, setDisabled] = useState(false);
   const handleRegister = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post(`${SERVER_URL}/auth/signup`, {
-      email,
-      password,
-      fullname: `${firstName} ${lastName}`,
-    });
-    localStorage.setItem("accessToken", data.token.accessToken);
-    localStorage.setItem("user", JSON.stringify(data.user));
-    setLoggedInUser(data.user);
-    navigate("/home");
+    setDisabled(true);
+    try {
+      const { data } = await axios.post(`${SERVER_URL}/auth/signup`, {
+        email,
+        password,
+        fullname: fullname,
+      });
+      localStorage.setItem("accessToken", data.token.accessToken);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      setEmail("");
+      setPassword("");
+      setFullName("");
+      setLoggedInUser(data.user);
+    } catch (err) {
+      console.log(err);
+    }
+    setDisabled(false);
   };
 
   return (
@@ -44,40 +53,52 @@ const Login = () => {
         <input
           type="email"
           name="email"
+          className="input-tag"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="password-container">
+          <input
+            type={viewPassword ? "text" : "password"}
+            name="password"
+            className="input-tag w-100"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <div className="toggle-password">
+            {viewPassword ? (
+              <i
+                className="ri-eye-fill"
+                onMouseLeave={() => {
+                  setViewPassword(!viewPassword);
+                }}
+              />
+            ) : (
+              <i
+                className="ri-eye-off-fill"
+                onMouseEnter={() => {
+                  setViewPassword(!viewPassword);
+                }}
+              />
+            )}
+          </div>
+        </div>
         <input
           type="text"
-          name="firstname"
-          placeholder="First Name"
-          value={firstName}
+          name="fullname"
+          className="input-tag"
+          placeholder="Full Name"
+          value={fullname}
           onChange={(e) => {
-            setFirstName(e.target.value);
+            setFullName(e.target.value);
           }}
           required
         />
-        <input
-          type="text"
-          name="lastname"
-          placeholder="Last Name"
-          value={lastName}
-          onChange={(e) => {
-            setLastName(e.target.value);
-          }}
-          required
-        />
-        <button className="btn" type="submit">
+        <button className="btn" type="submit" disabled={disabled}>
           Register
         </button>
       </form>

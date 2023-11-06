@@ -9,6 +9,7 @@ import Contact from "../pages/Contact";
 import { PaymentSuccess } from "../components/UI/PaymentSuccess";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import ForgotPassword from "../pages/ForgotPassword";
 
 const Routers = () => {
   return (
@@ -18,6 +19,7 @@ const Routers = () => {
       <Route path="/about" element={<About />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/forgotpassword" element={<ForgotPassword />} />
       <Route path="/cars" element={<CarListing />} />
       <Route path="/cars/:slug" element={<CarDetails />} />
       <Route path="/paymentsuccess" element={<PaymentSuccess />} />

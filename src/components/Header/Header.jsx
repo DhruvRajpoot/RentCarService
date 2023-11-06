@@ -1,5 +1,4 @@
 import React, { useContext, useRef } from "react";
-
 import { Container, Row, Col } from "reactstrap";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/header.css";
@@ -91,7 +90,7 @@ const Header = () => {
                     className="d-flex align-items-center gap-2"
                     style={{ fontSize: "0.9rem" }}
                   >
-                    <span>
+                    <span style={{ marginTop: "3px" }}>
                       <i className="ri-account-circle-fill"></i>
                     </span>
                     <span>{loggedInUser.fullname}</span>
@@ -101,7 +100,7 @@ const Header = () => {
                     style={{ cursor: "pointer" }}
                     onClick={handleLogout}
                   >
-                    <span>
+                    <span style={{ marginTop: "3px" }}>
                       <i class="ri-logout-circle-line"></i>
                     </span>
                     <span>Logout</span>
@@ -109,11 +108,11 @@ const Header = () => {
                 </div>
               ) : (
                 <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                  <Link
-                    to="/login"
-                    className=" d-flex align-items-center gap-1"
-                  >
-                    <i className="ri-login-circle-line"></i> Login
+                  <Link to="/login" className="d-flex align-items-center gap-1">
+                    <span style={{ marginTop: "3px" }}>
+                      <i className="ri-login-circle-line"></i>
+                    </span>
+                    Login
                   </Link>
 
                   <Link

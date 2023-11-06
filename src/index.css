@@ -86,6 +86,20 @@ section {
   transform: scale(0.97);
 }
 
+.btn:disabled {
+  background: #7c8a97 !important;
+  cursor: not-allowed !important;
+}
+
+.input-tag {
+  border: 1px solid #000d6b !important;
+  border-radius: 3px !important;
+  box-shadow: 3px 3px 2px 1px #000d6b !important;
+  padding: 5px 10px !important;
+  outline: none !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   background: #ccc;

@@ -23,9 +23,9 @@
 .header__top__help i {
   background: #fff;
   color: #000d6b;
-  padding: 1px 5px;
+  padding: .1px 4px;
   border-radius: 50px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .header__top__help a {

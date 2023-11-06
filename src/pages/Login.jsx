@@ -22,16 +22,26 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [viewPassword, setViewPassword] = useState(false);
 
+  const [disabled, setDisabled] = useState(false);
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post(`${SERVER_URL}/auth/login`, {
-      email,
-      password,
-    });
-    localStorage.setItem("accessToken", data.token.accessToken);
-    localStorage.setItem("user", JSON.stringify(data.user));
-    setLoggedInUser(data.user);
+    setDisabled(true);
+    try {
+      const { data } = await axios.post(`${SERVER_URL}/auth/login`, {
+        email,
+        password,
+      });
+      localStorage.setItem("accessToken", data.token.accessToken);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      setEmail("");
+      setPassword("");
+      setLoggedInUser(data.user);
+    } catch (err) {
+      console.log(err);
+    }
+    setDisabled(false);
   };
 
   return (
@@ -41,25 +51,46 @@ const Login = () => {
         <input
           type="email"
           name="email"
+          className="input-tag"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="password-container">
+          <input
+            type={viewPassword ? "text" : "password"}
+            name="password"
+            className="input-tag w-100"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <div className="toggle-password">
+            {viewPassword ? (
+              <i
+                className="ri-eye-fill"
+                onMouseLeave={() => {
+                  setViewPassword(!viewPassword);
+                }}
+              />
+            ) : (
+              <i
+                className="ri-eye-off-fill"
+                onMouseEnter={() => {
+                  setViewPassword(!viewPassword);
+                }}
+              />
+            )}
+          </div>
+        </div>
 
-        <Link to="#" className="forgot-password">
+        <Link to="/forgotpassword" className="forgot-password">
           Forgot password?
         </Link>
 
-        <button className="btn" type="submit">
+        <button className="btn" type="submit" disabled={disabled}>
           Login
         </button>
       </form>
