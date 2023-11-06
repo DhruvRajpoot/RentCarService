@@ -25,7 +25,7 @@ const Home = () => {
                   className="find__cars-left"
                   style={{ textAlign: "center" }}
                 >
-                  <h2>Find your best car here with us in few steps</h2>
+                  <h2>Find the best cars with us in just few steps</h2>
                 </div>
               </Col>
             </Row>
@@ -68,8 +68,8 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="mb-4 text-center">
-              <h6 className="section__subtitle">Our clients says</h6>
-              <h2 className="section__title">Testimonials</h2>
+              <h6 className="section__subtitle">Glowing Customer</h6>
+              <h2 className="section__title">Reviews</h2>
             </Col>
 
             <Testimonial />

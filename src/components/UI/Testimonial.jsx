@@ -41,32 +41,32 @@ const Testimonial = () => {
   const testimonialData = [
     {
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magni explicabo molestias recusandae repudiandae, dolor, sapiente placeat ab, animi eum minima nulla facere aliquam aut vitae quo pariatur voluptate odit?",
-      name: "Jhon Doe",
+      "\"Exceptional Service Experience: I was thoroughly impressed with the top-notch service provided by this rental company. From the moment I booked my car to the final drop-off, everything was seamless and stress-free. The vehicle was clean, well-maintained, and delivered on time. I can't recommend them enough!\"",
+      name: "Mahesh Kumar",
       designation: "Customer",
       imgUrl: ava01,
     },
 
     {
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magni explicabo molestias recusandae repudiandae, dolor, sapiente placeat ab, animi eum minima nulla facere aliquam aut vitae quo pariatur voluptate odit?",
-      name: "Jhon Doe",
+        "\"I recently rented a car from this company, and I must say it was a fantastic! Vehicle was in excellent condition, and the customer service was outstanding. I especially appreciated the prompt response to my questions and the smooth, hassle-free pickup and drop-off. I'll definitely be a returning customer!\"",
+      name: "Jaya Bachchan",
       designation: "Customer",
       imgUrl: ava02,
     },
 
     {
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magni explicabo molestias recusandae repudiandae, dolor, sapiente placeat ab, animi eum minima nulla facere aliquam aut vitae quo pariatur voluptate odit?",
-      name: "Jhon Doe",
+        "\"The car rental experience exceeded my expectations. The vehicle was in excellent condition, and the customer service was exceptional. I appreciate the punctuality and professionalism displayed by the team. Will definitely choose them again in the future travels.\"",
+      name: "Rahul Kumawat",
       designation: "Customer",
       imgUrl: ava03,
     },
 
     {
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magni explicabo molestias recusandae repudiandae, dolor, sapiente placeat ab, animi eum minima nulla facere aliquam aut vitae quo pariatur voluptate odit?",
-      name: "Jhon Doe",
+        "\"Renting from this company made our family trip a breeze. The spacious and clean vehicle accommodated all our needs, and the friendly driver ensured a safe and comfortable journey. My husband and I were thoroughly impressed, and we'll definitely be using their services again for our next adventure!\"",
+      name: "Radha Sharma",
       designation: "Customer",
       imgUrl: ava04,
     },

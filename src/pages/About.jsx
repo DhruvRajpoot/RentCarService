@@ -29,17 +29,16 @@ const About = () => {
                 </h2>
 
                 <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
+                We recognize that when you choose our rental services, you're entrusting us with your well-being.
+                As a result, we spare no effort in ensuring the safety of every vehicle in our fleet.
+                Our team of meticulously maintains and rigorously inspects our cars to guarantee their roadworthiness.
+                We have strict quality checks in place to uphold these standards.
                 </p>
 
                 <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
+                We continually invest in cutting-edge safety features and technology to enhance your rental experience.
+                Your safety is our utmost priority, and we take pride in being your dependable partner for secure and reliable ride solutions. 
+                We are unwavering in our commitment to delivering the highest standards of safety, granting you peace of mind as you embark on your journeys.
                 </p>
               </div>
             </Col>
@@ -51,8 +50,7 @@ const About = () => {
         <Container>
           <Row>
             <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Experts</h6>
-              <h2 className="section__title">Our Members</h2>
+              <h2 className="section__title">Our Expert Drivers</h2>
             </Col>
             <OurMembers />
           </Row>

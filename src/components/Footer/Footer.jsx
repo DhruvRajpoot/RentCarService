@@ -49,10 +49,8 @@ const Footer = () => {
               </h1>
             </div>
             <p className="footer__logo-content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur, distinctio, itaque reiciendis ab cupiditate harum ex
-              quam veniam, omnis expedita animi quibusdam obcaecati mollitia?
-              Delectus et ad illo recusandae temporibus?
+            We are your trusted destination for hassle-free car rentals.
+            Discover the ease of renting a car with us. Our extensive range of vehicles ensures you'll find the perfect ride for your needs, whether it's a weekend getaway or a long road trip.
             </p>
           </Col>
 
