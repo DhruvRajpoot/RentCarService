@@ -109,7 +109,7 @@ const CarDetails = () => {
 
             <Col lg="7" className="mt-5">
               <div className="booking-info mt-5">
-                <BookingForm carDetails={singleCarItem} />
+                <BookingForm carDetails={singleCarItem} slug={slug}/>
               </div>
             </Col>
 

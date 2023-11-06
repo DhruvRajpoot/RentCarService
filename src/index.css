@@ -69,17 +69,21 @@ section {
 
 .btn {
   padding: 7px 15px;
-  background: #000d6b;
-  color: #fff;
+  background: #000d6b !important;
+  color: #fff !important;
   border: none;
   outline: none;
   border-radius: 5px;
-  transition: 0.3s;
+  transition: all 0.2s ease-in-out !important;
+  box-shadow: none !important;
 }
 
 .btn:hover {
-  color: #fff !important;
-  background: #000c6bd0;
+  background: #0215a4 !important;
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
 
 ::-webkit-scrollbar {

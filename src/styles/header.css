@@ -7,7 +7,7 @@
 .header__top__left {
   display: flex;
   align-items: center;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
 }
 
 .header__top__left span {
@@ -46,8 +46,7 @@
 }
 
 .header__top__right a:hover {
-  color: #fff;
-  text-decoration: underline;
+  color: #ddd;
 }
 
 /* ============ header middle style =========== */
@@ -113,6 +112,17 @@
 
 .header__btn a:hover {
   color: #fff;
+}
+
+.logout-header-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.logout-header-btn:hover {
+  color: #ddd;
 }
 
 /* ================ main navbar styles =========== */
@@ -214,7 +224,7 @@
     display: block;
   }
 
-  .mobile-icon{
+  .mobile-icon {
     position: relative;
     top: 2px;
     margin-right: 4px;

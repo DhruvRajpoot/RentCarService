@@ -5,8 +5,13 @@ import axios from "axios";
 import { SERVER_URL } from "../../config/config";
 import { useContext } from "react";
 import { MyContext } from "../../context/context";
+import { useNavigate } from "react-router-dom";
+import useaxios from "../../utils/useaxios";
 
-const BookingForm = ({ carDetails }) => {
+const BookingForm = ({ carDetails, slug }) => {
+  const navigate = useNavigate();
+  const api = useaxios();
+
   // Reserve Now button disabled state
   const [disabled, setDisabled] = useState(false);
 
@@ -18,7 +23,7 @@ const BookingForm = ({ carDetails }) => {
   currentDate.setHours(currentDate.getHours() + 2);
 
   // Journey details state
-  const { journeyData, setJourneyData } = useContext(MyContext);
+  const { journeyData, setJourneyData, loggedInUser } = useContext(MyContext);
 
   const handleChange = (e) => {
     setJourneyData({ ...journeyData, [e.target.name]: e.target.value });
@@ -28,9 +33,13 @@ const BookingForm = ({ carDetails }) => {
     e.preventDefault();
     setDisabled(true);
 
+    if (!loggedInUser) {
+      navigate("/login", { state: { from: `/cars/${slug}` } });
+      return;
+    }
+
     try {
-      const { data } = await axios.post(`${SERVER_URL}/payment/createorder`, {
-        email: "dhruv.kutarya@gmail.com", // TODO: change this to logged in user's email
+      const { data } = await api.post(`${SERVER_URL}/payment/createorder`, {
         carDetails: {
           _id: carDetails.id,
           carName: carDetails.carName,
@@ -39,10 +48,9 @@ const BookingForm = ({ carDetails }) => {
       });
 
       // create booking order with razorpay_order_id
-      await axios.post(`${SERVER_URL}/order/createorder`, {
-        email: data.email,
+      await api.post(`${SERVER_URL}/order/createorder`, {
         razorpay_order_id: data.id,
-        carId: data.carDetails._id,
+        carId: String(data.carDetails._id),
         journeyDetails: journeyData,
       });
 

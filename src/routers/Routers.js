@@ -7,6 +7,8 @@ import CarDetails from "../pages/CarDetails";
 import NotFound from "../pages/NotFound";
 import Contact from "../pages/Contact";
 import { PaymentSuccess } from "../components/UI/PaymentSuccess";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 const Routers = () => {
   return (
@@ -14,6 +16,8 @@ const Routers = () => {
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/cars" element={<CarListing />} />
       <Route path="/cars/:slug" element={<CarDetails />} />
       <Route path="/paymentsuccess" element={<PaymentSuccess />} />

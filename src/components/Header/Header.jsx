@@ -42,7 +42,8 @@ const Header = () => {
     }
   };
 
-  const { setFilterCarData } = useContext(MyContext);
+  const { setFilterCarData, loggedInUser, setLoggedInUser } =
+    useContext(MyContext);
 
   const handleSearch = (event) => {
     const searchQuery = event.target.value.replace(/\s+/g, "");
@@ -59,6 +60,12 @@ const Header = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setLoggedInUser(null);
+    navigate("/login");
+  };
+
   return (
     <header className="header">
       {/* ============ header top ============ */}
@@ -69,7 +76,7 @@ const Header = () => {
               <div className="header__top__left">
                 <span>Need Help?</span>
                 <span className="header__top__help">
-                  <i class="ri-mail-fill"></i>
+                  <i className="ri-mail-fill"></i>
                   <a href="mailto:contact.rentcarservice@gmail.com">
                     contact.rentcarservice@gmail.com
                   </a>
@@ -78,15 +85,45 @@ const Header = () => {
             </Col>
 
             <Col lg="6" md="6" sm="6">
-              <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                <Link to="#" className=" d-flex align-items-center gap-1">
-                  <i className="ri-login-circle-line"></i> Login
-                </Link>
+              {loggedInUser !== null ? (
+                <div className="header__top__right d-flex align-items-center justify-content-end gap-4">
+                  <div
+                    className="d-flex align-items-center gap-2"
+                    style={{ fontSize: "0.9rem" }}
+                  >
+                    <span>
+                      <i className="ri-account-circle-fill"></i>
+                    </span>
+                    <span>{loggedInUser.fullname}</span>
+                  </div>
+                  <div
+                    className="logout-header-btn"
+                    style={{ cursor: "pointer" }}
+                    onClick={handleLogout}
+                  >
+                    <span>
+                      <i class="ri-logout-circle-line"></i>
+                    </span>
+                    <span>Logout</span>
+                  </div>
+                </div>
+              ) : (
+                <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
+                  <Link
+                    to="/login"
+                    className=" d-flex align-items-center gap-1"
+                  >
+                    <i className="ri-login-circle-line"></i> Login
+                  </Link>
 
-                <Link to="#" className=" d-flex align-items-center gap-1">
-                  <i className="ri-user-line"></i> Register
-                </Link>
-              </div>
+                  <Link
+                    to="/register"
+                    className=" d-flex align-items-center gap-1"
+                  >
+                    <i className="ri-user-line"></i> Register
+                  </Link>
+                </div>
+              )}
             </Col>
           </Row>
         </Container>

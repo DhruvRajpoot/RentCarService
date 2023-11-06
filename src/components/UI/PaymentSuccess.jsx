@@ -18,9 +18,7 @@ export const PaymentSuccess = () => {
     const api = useaxios();
     setLoading(true);
     try {
-      const response = await axios.get(
-        `${SERVER_URL}/order/getorder/${orderId}`
-      );
+      const response = await api.get(`${SERVER_URL}/order/getorder/${orderId}`);
       if (response.status === 200) {
         console.log(response.data);
         setOrderDetails(response.data);
@@ -45,10 +43,12 @@ export const PaymentSuccess = () => {
         <>
           {Object.keys(orderDetails).length === 0 ? (
             <div className="payment-succes-wrapper">
-              <h2 style={{ color: "red", marginBottom:"1rem" }}>Order not found</h2>
-              <button className="payment-success-btn">
-                <Link to="/">Go to Home</Link>
-              </button>
+              <h2 style={{ color: "red", marginBottom: "1rem" }}>
+                Order not found
+              </h2>
+              <Link to="/">
+                <button className="payment-success-btn">Go to Home</button>
+              </Link>
             </div>
           ) : (
             <div className="payment-success-wrapper">
@@ -59,9 +59,9 @@ export const PaymentSuccess = () => {
                 Your rental car is successfully booked
               </h3>
               <h4>Thank you for choosing our service</h4>
-              <button className="payment-success-btn">
-                <Link to="/">Go to Home</Link>
-              </button>
+              <Link to="/">
+                <button className="payment-success-btn">Go to Home</button>
+              </Link>
             </div>
           )}
         </>

@@ -35,15 +35,11 @@
 .payment-success-btn {
   padding: 7px 15px;
   background: #000d6b;
+  color: white;
   border: none;
   outline: none;
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
-}
-
-.payment-success-btn a{
-  text-decoration: none;
-  color: #fff !important;
 }
 
 .payment-success-btn:hover {
