@@ -9,6 +9,7 @@ import ServicesList from "../components/UI/ServicesList";
 import carData from "../assets/data/carData";
 import CarItem from "../components/UI/CarItem";
 import Testimonial from "../components/UI/Testimonial";
+import BecomeDriverSection from "../components/UI/BecomeDriverSection";
 
 const Home = () => {
   return (
@@ -62,6 +63,9 @@ const Home = () => {
           </Row>
         </Container>
       </section>
+
+      {/* Become a driver section */}
+      <BecomeDriverSection />
 
       {/* =========== testimonial section =========== */}
       <section className="mb-5">

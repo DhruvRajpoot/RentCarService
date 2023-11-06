@@ -83,7 +83,7 @@ const Contact = () => {
                   ></textarea>
                 </FormGroup>
 
-                <button className=" contact__btn" type="submit">
+                <button className="contact__btn" type="submit">
                   Send Message
                 </button>
               </Form>
@@ -102,9 +102,9 @@ const Contact = () => {
 
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="mb-0 fs-6">Email:</h6>
-                  <p className="section__description mb-0">
-                    rentcarservice@gmail.com
-                  </p>
+                  <a href="mailto:contact.rentcarservice@gmail.com" className="section__description mb-0">
+                    contact.rentcarservice@gmail.com
+                  </a>
                 </div>
 
                 <h6 className="fw-bold mt-4">Follow Us</h6>

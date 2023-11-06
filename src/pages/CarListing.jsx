@@ -37,9 +37,9 @@ const CarListing = () => {
                 </span>
 
                 <select className="selection" onChange={handleSort}>
-                  <option value="none"> -- Select -- </option>
-                  <option value="low">Low to High</option>
-                  <option value="high">High to Low</option>
+                  <option value="none">Featured</option>
+                  <option value="low">Price Low to High</option>
+                  <option value="high">Price High to Low</option>
                 </select>
               </div>
             </Col>

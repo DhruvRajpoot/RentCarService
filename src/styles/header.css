@@ -7,7 +7,7 @@
 .header__top__left {
   display: flex;
   align-items: center;
-  column-gap: 1rem;
+  column-gap: .5rem;
 }
 
 .header__top__left span {
@@ -17,15 +17,15 @@
 .header__top__help {
   display: flex;
   align-items: center;
-  column-gap: 0.4rem;
+  column-gap: 0.5rem;
 }
 
 .header__top__help i {
   background: #fff;
   color: #000d6b;
-  padding: 2px 4px;
+  padding: 1px 5px;
   border-radius: 50px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .header__top__help a {

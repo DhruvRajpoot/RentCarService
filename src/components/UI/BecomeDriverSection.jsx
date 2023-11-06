@@ -3,6 +3,7 @@ import "../../styles/become-driver.css";
 import { Container, Row, Col } from "reactstrap";
 
 import driverImg from "../../assets/all-images/toyota-offer-2.png";
+import { Link } from "react-router-dom";
 
 const BecomeDriverSection = () => {
   return (
@@ -18,9 +19,15 @@ const BecomeDriverSection = () => {
               Do You Want to Earn With Us? So Don't Be Late
             </h2>
 
-            <button className="btn become__driver-btn mt-4">
-              Become a Driver
-            </button>
+            <h5 style={{ color: "white" }}>
+              Send us your details and we will contact you as soon as possible
+            </h5>
+
+            <Link to="/contact">
+              <button className="btn become__driver-btn mt-4">
+                Become a Driver
+              </button>
+            </Link>
           </Col>
         </Row>
       </Container>

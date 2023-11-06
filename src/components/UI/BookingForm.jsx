@@ -3,6 +3,8 @@ import "../../styles/booking-form.css";
 import { Form } from "reactstrap";
 import axios from "axios";
 import { SERVER_URL } from "../../config/config";
+import { useContext } from "react";
+import { MyContext } from "../../context/context";
 
 const BookingForm = ({ carDetails }) => {
   // Reserve Now button disabled state
@@ -15,16 +17,8 @@ const BookingForm = ({ carDetails }) => {
   );
   currentDate.setHours(currentDate.getHours() + 2);
 
-  // Booking form data
-  const [journeyData, setJourneyData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    mobilenumber: "",
-    address: "",
-    pickup_date: "",
-    pickup_time: "",
-  });
+  // Journey details state
+  const { journeyData, setJourneyData } = useContext(MyContext);
 
   const handleChange = (e) => {
     setJourneyData({ ...journeyData, [e.target.name]: e.target.value });
