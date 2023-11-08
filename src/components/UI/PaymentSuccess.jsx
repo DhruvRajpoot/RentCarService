@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import "../../styles/payment-success.css";
 import { SERVER_URL } from "../../config/config.jsx";
 import useaxios from "../../utils/useaxios.jsx";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { MyContext } from "../../context/context.js";
 
 export const PaymentSuccess = () => {
   const location = useLocation();
@@ -13,8 +14,15 @@ export const PaymentSuccess = () => {
   const orderId = searchParams.get("order_id");
   const [loading, setLoading] = useState(true);
   const [orderDetails, setOrderDetails] = useState({});
+  const { loggedInUser } = useContext(MyContext);
+  const navigate = useNavigate();
 
   const fetchOrderDetails = async () => {
+    if (!loggedInUser) {
+      navigate("/login");
+      return;
+    }
+
     const api = useaxios();
     setLoading(true);
     try {
@@ -58,7 +66,8 @@ export const PaymentSuccess = () => {
               <h3 className="payment-success-heading">
                 Your rental car is successfully booked
               </h3>
-              <h4>Thank you for choosing our service</h4>
+              <h5>We have mailed you the details of your booking</h5>
+              <h6>Thank you for choosing our service</h6>
               <Link to="/">
                 <button className="payment-success-btn">Go to Home</button>
               </Link>
